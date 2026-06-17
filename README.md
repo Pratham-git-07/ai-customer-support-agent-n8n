@@ -1,23 +1,54 @@
+# Customer Support Automation using n8n
+
 ## Overview
 
-This project is a rule-based customer support automation workflow built using **n8n**, **Google Sheets**, **Gmail**, and **JavaScript**.
+This repository contains two versions of an automated customer support system built using **n8n**, **Google Sheets**, **Gmail**, **JavaScript**, and **Google Gemini AI**.
 
-The workflow automatically detects new customer requests submitted through Google Sheets, categorizes them into predefined categories, sends automated email responses, and logs processed requests into another Google Sheet.
+The project automatically detects new customer requests submitted through Google Sheets, categorizes them, sends automated email responses, and logs processed requests into another Google Sheet.
+
+The repository demonstrates the evolution from a traditional rule-based workflow to an AI-powered workflow with intelligent classification and failure handling.
 
 ---
 
-## Features
+## Project Versions
 
-* Google Sheets Trigger for new customer requests
-* JavaScript-based data preprocessing
-* Switch-based query routing
-* Automated Gmail responses
-* Logging of processed requests
-* Audit trail for customer interactions
+### V1: Rule-Based Workflow
+
+A deterministic workflow that uses JavaScript and Switch nodes to classify customer queries into predefined categories.
+
+**Features:**
+
+* Google Sheets Trigger
+* JavaScript preprocessing
+* Rule-based categorization
+* Gmail automated responses
+* Logging to Google Sheets
+
+Supported categories:
+
+* Billing
+* Technical
+* Feedback
+
+---
+
+### V2: AI-Powered Workflow
+
+An enhanced workflow that leverages **Google Gemini AI** for intelligent query classification.
+
+**Additional Features:**
+
+* AI-based customer query classification
+* Google Gemini integration
+* AI failure detection and fallback handling
+* AI status logging
+* Automated AI failure email alerts
 
 ---
 
 ## Workflow Architecture
+
+### V1 Architecture
 
 ```text
 Google Sheets Trigger
@@ -34,69 +65,93 @@ Switch Node
       Append Row in Sheet
 ```
 
+### V2 Architecture
+
+```text
+Google Sheets Trigger
+        ↓
+Preprocess Query
+        ↓
+Google Gemini AI
+        ↓
+Merge Results
+        ↓
+Switch Node
+ ┌────────┬──────────┬──────────┬───────────┐
+Billing Technical Feedback AI Failed
+    ↓         ↓         ↓          ↓
+ Gmail     Gmail     Gmail   Alert Email
+    └─────────┴─────────┴──────────┘
+                  ↓
+         Log Support Request
+```
+
 ---
 
-## Categories Supported
+## Repository Structure
 
-* Billing
-* Technical
-* Feedback
+```text
+ai-customer-support-agent-n8n/
+│
+├── v1-rule-based/
+│   ├── workflow.json
+│   ├── README.md
+│   └── screenshots/
+│
+├── v2-ai-based/
+│   ├── workflow.json
+│   ├── README.md
+│   └── screenshots/
+│
+├── README.md
+├── LICENSE
+└── .gitignore
+```
 
 ---
 
 ## Technologies Used
 
 * n8n
+* JavaScript
 * Google Sheets API
 * Gmail API
-* JavaScript
+* Google Gemini AI
+* AI Prompt Engineering
 
 ---
 
-## Screenshots
+## Key Features
 
-### Workflow Overview
-
-<img width="1847" height="851" alt="workflow-overview" src="https://github.com/user-attachments/assets/d848ba2c-6dc0-4bfc-a0fd-37b98f4fee59" />
-
-
-### Input Sheet
-
-<img width="1441" height="635" alt="google-sheet-input" src="https://github.com/user-attachments/assets/d3443b1a-7c3e-4aee-96fd-61b9b41ca9a6" />
-
-### Log Sheet
-
-<img width="1637" height="573" alt="log-sheet" src="https://github.com/user-attachments/assets/f02a4772-a70d-46ea-97f3-06c56653afd6" />
-
-
----
-
-## How It Works
-
-1. A customer request is added to Google Sheets.
-2. The workflow is automatically triggered.
-3. JavaScript normalizes and processes the data.
-4. The Switch node routes the request based on category.
-5. An automated email response is sent.
-6. The processed request is logged into another Google Sheet.
+* Automated customer support workflow
+* Real-time Google Sheets trigger
+* Email automation using Gmail
+* Query classification
+* AI-powered routing
+* Failure handling and alerts
+* Audit logging
+* Scalable workflow design
 
 ---
 
 ## Future Improvements
 
-* AI-powered query classification
-* Dynamic email generation using LLMs
+* Dynamic AI-generated email responses
 * Sentiment analysis
 * Ticket ID generation
-* Slack notifications
+* Slack/Discord notifications
 * Database integration
+* Dashboard for analytics
+* Multi-language support
+
+---
+
+## Author
+
+Pratham Singh
 
 ---
 
 ## License
 
 This project is licensed under the MIT License.
-
-## Author
-
-**Pratham Singh**
