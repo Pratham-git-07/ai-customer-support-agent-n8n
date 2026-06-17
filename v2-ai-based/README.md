@@ -202,7 +202,8 @@ Example:
 
 ### Workflow Overview
 
-<img width="1877" height="870" alt="workflow-overview-v2" src="https://github.com/user-attachments/assets/6437b1c7-88b8-4010-9bd1-24136bb89e83" />
+<img width="1817" height="881" alt="workflow-overview-v2" src="https://github.com/user-attachments/assets/a069b714-a4cd-4c2f-831f-d365ced1a171" />
+
 
 
 ### Gemini Classification
