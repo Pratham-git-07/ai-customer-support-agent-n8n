@@ -194,7 +194,7 @@ Example:
 | Name | Category | Status | AI Status |
 |------|----------|--------|-----------|
 | Aanya | billing | Email Sent | Success |
-| Shanaya | - | AI Failed | Failed |
+| Sumit | feedback | AI Failed | Failed |
 
 ---
 
